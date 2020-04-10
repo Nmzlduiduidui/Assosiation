@@ -1,0 +1,12 @@
+.admin-main {
+    padding: 0;
+}
+
+.qz-show {
+    display: block;
+}
+
+.qz-ul-a .active {
+    background: rgba(1, 89, 90, 0.5);
+    color: white;
+}

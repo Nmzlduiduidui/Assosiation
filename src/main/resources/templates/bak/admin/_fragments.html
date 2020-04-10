@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+
+<head th:fragment="head(title)">
+    <meta charset="UTF-8">
+    <title>南宁学院社团管理系统</title>
+    <link rel="alternate icon" href="../../static/myPicture.jpg">
+    <link rel="stylesheet" href="../../static/assets/css/amazeui.css" th:href="@{/assets/css/amazeui.css}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../static/assets/css/admin.css" th:href="@{/assets/css/admin.css}">
+    <link rel="stylesheet" href="..../style/index.css" th:href="@{/style/index.css}"/>
+    <link rel="stylesheet" href="../../static/style/user.css" th:href="@{/style/user.css}"/>
+    <link rel="stylesheet" href="../static/../style/tig.css" th:href="@{/style/tig.css}"/>
+    <link rel="stylesheet" href="../../static/layui/css/layui.css" th:href="@{/layui/css/layui.css}"/>
+    <link rel="stylesheet" href="../../static/style/SuperAdmin.css" th:href="@{/style/SuperAdmin.css}"/>
+    <script src="../../static/layui/layui.js" th:src="@{/layui/layui.js}"></script>
+</head>
+<script src="../../static/assets/js/jquery-1.12.4.min.js" th:src="@{/assets/js/jquery-1.12.4.min.js}"></script>
+<script src="../../static/style/js/background.js" th:src="@{/style/js/background.js}"></script>
+<body>
+<!--导航-->
+
+<div th:fragment="header">
+    <div class="am-topbar" style="margin-bottom: 0">
+        <h1 class="am-topbar-brand qz-h1">
+            <img src="../style/images/myPicture.jpg">&nbsp;&nbsp;后台管理系统
+        </h1>
+
+        <div class="am-topbar-right" shiro:authenticated="">
+            <div class="am-dropdown" data-am-dropdown>
+                <button class="personalSpace am-btn am-topbar-btn am-btn-sm am-dropdown-toggle"
+                        data-am-dropdown-toggle style="border-radius: 50%;">
+                    <span class="name"><shiro:principal property="username"/></span>
+                    <span class="am-icon-caret-down"></span>
+                </button>
+                <ul class="am-dropdown-content tar">
+                    <li><a href="/user">个人主页</a></li>
+                    <li><a href="/admin" shiro:hasRole="admin">网站后台管理</a></li>
+                    <li shiro:hasRole="user"><a class="feedbackClick">消息&nbsp;&nbsp;<span
+                            class="newsNum am-badge am-badge-danger"></span></a></li>
+                    <li shiro:hasRole="admin"><a class="feedbackClick">反馈&nbsp;&nbsp;
+                        <span id="mess" class="am-badge am-radius am-badge-danger"></span></a>
+                    </li>
+                    <hr style="margin: 10px 0 5px 0;">
+                    <li><a th:href="@{/admin/logout}" class="logou" style="cursor: pointer;">退出登录</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+</div>
+</body>
+<script src="../../static/assets/js/amazeui.js" th:src="@{/assets/js/amazeui.js}"></script>
+<script src="../../static/assets/js/app.js" th:src="@{/assets/js/app.js}"></script>
+<script src="../../static/style/js/SuperAdmin.js" th:src="@{/style/js/SuperAdmin.js}"></script>
+<script src="../../static/style/js/header.js" th:src="@{/style/js/header.js}"></script>
+</html>

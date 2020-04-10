@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta charset="UTF-8">
+    <title>社团管理系统</title>
+    <link rel="stylesheet" href="../../static/style/index.css" th:href="@{/style/index.css}"/>
+    <link rel="alternate icon" type="../../static/image/png" href="../../static//myPicture.jpg">
+    <link rel="stylesheet" href="../../static/assets/css/amazeui.css" th:href="@{/assets/css/amazeui.css}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../static/style/errorpage.css"th:href="@{/style/errorpage.css}"/>
+
+    <script src="../../static/assets/js/jquery-1.12.4.min.js" th:src="@{/assets/js/jquery-1.12.4.min.js}"></script>
+</head>
+
+<script src="../../static/style/js/background.js" th:src="@{/style/js/background.js}"></script>
+<body>
+<!--首页-->
+<div th:replace="_fragments :: header"></div>
+
+<div id="main">
+    <div class="error505Page">
+        <img src="img/errorpage/505.jpg"/>
+    </div>
+    <div class="errorWords">
+        <div class="errorWords_display">
+            <br>
+            <br>
+            <br>
+            <h1>505</h1>
+            <p>由于天气原因，这个页面已经去南极避暑了</p>
+            <p><a href="/"><u>返回首页</u></a><a href="#" style="margin-left: 30px"></a></p>
+        </div>
+    </div>
+</div>
+
+<!--底部--><!--
+<div th:replace="footer :: footer"></div>-->
+
+</body>
+<script src="../../static/assets/js/amazeui.js"th:src="@{/assets/js/amazeui.js}"></script>
+<script src="../../static/style/js/tags.js"th:src="@{/style/js/tags.js}"></script>
+<script src="../../static/style/js/header.js" th:src="@{/style/js/header.js}"></script>
+</html>

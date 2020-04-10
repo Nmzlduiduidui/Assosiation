@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+
+<head th:replace="admin/_fragments :: head(~{::title})">
+    <meta charset="UTF-8">
+    <title>后台管理界面</title>
+    <link rel="alternate icon" type="image/png" href="myPicture.jpg">
+</head>
+<script src="../../static/assets/js/jquery-1.12.4.min.js" th:src="@{/assets/js/jquery-1.12.4.min.js}"></script>
+<script src="../../static/style/js/background.js" th:src="@{/style/js/background.js}"></script>
+<body>
+<!--首页-->
+
+<!--导航-->
+<div th:replace="admin/_fragments  :: header"></div>
+
+<!--页面主体内容-->
+<div class="am-cf admin-main">
+    <!-- sidebar start -->
+    <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
+        <div class="am-offcanvas-bar admin-offcanvas-bar">
+            <ul class="am-list admin-sidebar-list qz-ul-a">
+                <li class="list-item websSet active">
+                    <a style="cursor: pointer;">
+                        <span class="am-icon-file"></span> 网站信息
+                        <span class="am-icon-angle-right am-fr am-margin-right"></span>
+                    </a>
+                </li>
+                <li class="list-item userSet">
+                    <a style="cursor: pointer;">
+                        <span class="am-icon-cog"></span> 学生管理
+                        <span class="am-icon-angle-right am-fr am-margin-right"></span>
+                    </a>
+                </li>
+                <li class="list-item addSet">
+                    <a style="cursor: pointer;">
+                        <span class="am-icon-home"></span> 入会审核
+                        <span class="am-icon-angle-right am-fr am-margin-right"></span>
+                    </a>
+                </li>
+                <li class="list-item associationSet">
+                    <a style="cursor: pointer;">
+                        <span class="am-icon-road"></span>社团管理
+                        <span class="am-icon-angle-right am-fr am-margin-right"></span>
+                    </a>
+                </li>
+                <li class="list-item activitySet">
+                    <a style="cursor: pointer;">
+                        <span class="am-icon-refresh"></span>活动管理
+                        <span class="am-icon-angle-right am-fr am-margin-right"></span>
+                    </a>
+                </li>
+                <li class="list-item noticeSet">
+                    <a style="cursor: pointer;">
+                        <span class="am-icon-flag"></span>公告管理
+                        <span class="am-icon-angle-right am-fr am-margin-right"></span>
+                    </a>
+                </li>
+                <li class="list-item massageSet">
+                    <a style="cursor: pointer;">
+                        <span class="am-icon-book"></span>留言管理
+                        <span class="am-icon-angle-right am-fr am-margin-right"></span>
+                    </a>
+                </li>
+                <li class="list-item blogSet">
+                    <a style="cursor: pointer;">
+                        <span class="am-icon-comments"></span>博客管理
+                        <span class="am-icon-angle-right am-fr am-margin-right"></span>
+                    </a>
+                </li>
+                <li class="list-item fridSet">
+                    <a style="cursor: pointer;">
+                        <span class="am-icon-tasks"></span>友链管理
+                        <span class="am-icon-angle-right am-fr am-margin-right">  </span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="am-panel am-panel-default admin-sidebar-panel">
+                <div class="am-panel-bd">
+                    <p><span class="am-icon-bookmark"></span> 公告</p>
+                    <p >
+                        嗝？—— 包子</h1>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- content start -->
+    <div class="admin-content">
+        <div id="websSet" style="padding-bottom: 70px;">
+            <div class="am-cf am-padding am-padding-bottom-0">
+                <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">网站信息</strong> /
+                    <small>基本信息</small>
+                </div>
+            </div>
+            <hr/>
+            <div class="am-g">
+                <div class="am-u-sm-12 am-u-md-12">
+                    <div class="am-form am-form-horizontal message">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="userSet" style="padding-bottom: 70px;">
+            <div class="am-cf am-padding am-padding-bottom-0">
+                <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">学生管理</strong> /
+                    <small>users information</small>
+                </div>
+            </div>
+            <hr/>
+            <div class="am-g">
+                <div class="am-u-sm-12 am-u-md-12 qz-div-div">
+                    <div class="am-form">
+                        <table class="am-table am-table-striped am-table-hover table-main">
+                            <thead>
+                            <tr>
+                                <th class="table-id">ID</th>
+                                <th class="table-title">用户名</th>
+                                <th class="table-type">手机号</th>
+                                <th class="table-author am-hide-sm-only">真实姓名</th>
+                                <th class="table-date am-hide-sm-only">QQ号</th>
+                                <th class="table-date am-hide-sm-only">邮箱</th>
+                                <th class="table-date am-hide-sm-only">创建时间</th>
+                                <th class="table-set">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody class="usersMessage">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="qz-page" id="page-helper-user" style="text-align: right">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="addSet" style="padding-bottom: 70px;">
+            <div class="am-cf am-padding am-padding-bottom-0">
+                <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">入会审核</strong> /
+                    <small>addApply</small>
+                </div>
+            </div>
+            <hr/>
+            <div class="am-g">
+                <div class="am-u-sm-12 am-u-md-12 qz-div-div">
+                    <div class="am-form">
+                        <table class="am-table am-table-striped am-table-hover table-main">
+                            <thead>
+                            <tr>
+                                <th class="table-id">ID</th>
+                                <th class="table-title">用户名</th>
+                                <th class="table-type">手机号</th>
+                                <th class="table-author am-hide-sm-only">真实姓名</th>
+                                <th class="table-date am-hide-sm-only">QQ号</th>
+                                <th class="table-date am-hide-sm-only">邮箱</th>
+                                <th class="table-date am-hide-sm-only">创建时间</th>
+                                <th class="table-set">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody class="usersMessage">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="qz-page" id="page-helper-add" style="text-align: right">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="showSet" style="padding-bottom: 70px;">
+            <div class="am-cf am-padding am-padding-bottom-0">
+                <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">风采展示管理</strong> /
+                    <small>show manager</small>
+                </div>
+            </div>
+            <hr/>
+            <div class="am-g">
+                <div class="am-u-sm-12 am-u-md-12 qz-div-div">
+                    <div class="am-form">
+                        <table class="am-table am-table-striped am-table-hover table-main">
+                            <thead>
+                            <tr>
+                                <th class="table-id">ID</th>
+                                <th class="table-title">用户名</th>
+                                <th class="table-type">手机号</th>
+                                <th class="table-author am-hide-sm-only">真实姓名</th>
+                                <th class="table-date am-hide-sm-only">QQ号</th>
+                                <th class="table-date am-hide-sm-only">邮箱</th>
+                                <th class="table-date am-hide-sm-only">创建时间</th>
+                                <th class="table-set">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody class="usersMessage">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="qz-page" id="page-helper-show" style="text-align: right">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="associationSet" style="padding-bottom: 70px;">
+            <div class="am-cf am-padding am-padding-bottom-0">
+                <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">社团管理</strong> /
+                    <small>association manager</small>
+                </div>
+            </div>
+            <hr/>
+            <div class="am-g">
+                <div class="am-u-sm-12 am-u-md-12 qz-div-div">
+                    <div class="am-form">
+                        <table class="am-table am-table-striped am-table-hover table-main">
+                            <thead>
+                            <tr>
+                                <th class="table-id">ID</th>
+                                <th class="table-title">用户名</th>
+                                <th class="table-type">手机号</th>
+                                <th class="table-author am-hide-sm-only">真实姓名</th>
+                                <th class="table-date am-hide-sm-only">QQ号</th>
+                                <th class="table-date am-hide-sm-only">邮箱</th>
+                                <th class="table-date am-hide-sm-only">创建时间</th>
+                                <th class="table-set">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody class="usersMessage">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="qz-page" id="page-helper-association" style="text-align: right">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="activitySet" style="padding-bottom: 70px;">
+            <div class="am-cf am-padding am-padding-bottom-0">
+                <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">活动管理</strong> /
+                    <small>activity manager</small>
+                </div>
+            </div>
+            <hr/>
+            <div class="am-g">
+                <div class="am-u-sm-12 am-u-md-12 qz-div-div">
+                    <div class="am-form">
+                        <table class="am-table am-table-striped am-table-hover table-main">
+                            <thead>
+                            <tr>
+                                <th class="table-id">ID</th>
+                                <th class="table-title">用户名</th>
+                                <th class="table-type">手机号</th>
+                                <th class="table-author am-hide-sm-only">真实姓名</th>
+                                <th class="table-date am-hide-sm-only">QQ号</th>
+                                <th class="table-date am-hide-sm-only">邮箱</th>
+                                <th class="table-date am-hide-sm-only">创建时间</th>
+                                <th class="table-set">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody class="usersMessage">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="qz-page" id="page-helper-activity" style="text-align: right">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="noticeSet" style="padding-bottom: 70px;">
+            <div class="am-cf am-padding am-padding-bottom-0">
+                <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">公告管理</strong> /
+                    <small>notice manager</small>
+                </div>
+            </div>
+            <hr/>
+            <div class="am-g">
+                <div class="am-u-sm-12 am-u-md-12 qz-div-div">
+                    <div class="am-form">
+                        <table class="am-table am-table-striped am-table-hover table-main">
+                            <thead>
+                            <tr>
+                                <th class="table-id">ID</th>
+                                <th class="table-title">用户名</th>
+                                <th class="table-type">手机号</th>
+                                <th class="table-author am-hide-sm-only">真实姓名</th>
+                                <th class="table-date am-hide-sm-only">QQ号</th>
+                                <th class="table-date am-hide-sm-only">邮箱</th>
+                                <th class="table-date am-hide-sm-only">创建时间</th>
+                                <th class="table-set">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody class="usersMessage">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="qz-page" id="page-helper-notice" style="text-align: right">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="messageSet" style="padding-bottom: 70px;">
+            <div class="am-cf am-padding am-padding-bottom-0">
+                <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">留言管理</strong> /
+                    <small>message manager</small>
+                </div>
+            </div>
+            <hr/>
+            <div class="am-g">
+                <div class="am-u-sm-12 am-u-md-12 qz-div-div">
+                    <div class="am-form">
+                        <table class="am-table am-table-striped am-table-hover table-main">
+                            <thead>
+                            <tr>
+                                <th class="table-id">ID</th>
+                                <th class="table-title">用户名</th>
+                                <th class="table-type">手机号</th>
+                                <th class="table-author am-hide-sm-only">真实姓名</th>
+                                <th class="table-date am-hide-sm-only">QQ号</th>
+                                <th class="table-date am-hide-sm-only">邮箱</th>
+                                <th class="table-date am-hide-sm-only">创建时间</th>
+                                <th class="table-set">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody class="usersMessage">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="qz-page" id="page-helper-message" style="text-align: right">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="blogSet" style="padding-bottom: 70px;">
+            <div class="am-cf am-padding am-padding-bottom-0">
+                <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">博客管理</strong> /
+                    <small>blog information</small>
+                </div>
+            </div>
+            <hr/>
+            <div class="am-g comment">
+                <div class="am-u-sm-12 am-u-md-12">
+                    <div class="am-form">
+                        <table class="am-table am-table-striped am-table-hover table-main">
+                            <thead>
+                            <tr>
+                                <th class="table-id">ID</th>
+                                <th class="table-title">博客名</th>
+                                <th class="table-date am-hide-sm-only">创建时间</th>
+                                <th class="table-set">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody class="usersMessage">
+                            <tr>
+                                <td>15</td>
+                                <td>Business management</td>
+                                <td>default</td>
+                                <td>
+                                    <div class="am-btn-toolbar">
+                                        <div class="am-btn-group am-btn-group-xs">
+                                            <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only">
+                                                <span class="am-icon-save"></span> 编辑
+                                            </button>
+                                            &nbsp;&nbsp;<button
+                                                class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only">
+                                            <span class="am-icon-trash-o"></span> 删除
+                                        </button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="qz-page" id="page-helper-two" style="text-align: right">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="fridSet" style="padding-bottom: 70px;">
+            <div class="am-cf am-padding am-padding-bottom-0">
+                <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">友链管理</strong> /
+                    <small>friendlink management</small>
+                </div>
+            </div>
+            <hr/>
+            <div class="am-g">
+                <div class="am-u-sm-12 am-u-md-4 am-u-md-push-8"></div>
+                <div class="am-u-sm-12 am-u-md-8 am-u-md-pull-4">
+
+                    <div class="am-form">
+                        <table class="am-table am-table-striped am-table-hover table-main">
+                            <thead>
+                            <tr>
+                                <th class="table-id">ID</th>
+                                <th class="table-title">友链名</th>
+                                <th class="table-date am-hide-sm-only">友链地址</th>
+                                <th class="table-title">创建时间</th>
+                                <th class="table-set">操作</th>
+                            </tr>
+                            </thead>
+                            <tbody class="usersMessage">
+                            <tr>
+                                <td>名</td>
+                                <td>友链地址</td>
+                                <td>编辑</td>
+                                <td>
+                                    <div class="am-btn-toolbar">
+                                        <div class="am-btn-group am-btn-group-xs">
+                                            <button class="am-btn am-btn-default am-btn-xs am-text-danger am-hide-sm-only">
+                                                <span class="am-icon-trash-o"></span> 删除
+                                            </button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="qz-page" id="page-helper-friend" style="text-align: right">
+
+                    </div>
+
+
+                    <div class="am-form am-form-horizontal message">
+                        <div class="am-form-group">
+                            <label for="friend-name" class="am-u-sm-3 am-form-label">友链名 / Name</label>
+                            <div class="am-u-sm-9">
+                                <input type="text" id="friend-name" placeholder="友链名" value="">
+                            </div>
+                        </div>
+                        <div class="am-form-group">
+                            <label for="friend-url" class="am-u-sm-3 am-form-label">友链地址</label>
+                            <div class="am-u-sm-9">
+                                <input type="text" id="friend-url" placeholder="友链地址" value="">
+                            </div>
+                        </div>
+                        <div class="am-form-group" style="padding-bottom: 40px">
+                            <div class="am-u-sm-9 am-u-sm-push-3">
+                                <button type="button" class="am-btn am-btn-primary savebtn">保存</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="notice notice-box-suc">
+        <i class="am-icon-exclamation-circle"></i>
+        <span> 客官,添加成功</span>
+    </div>
+
+    <div class="notice notice-box notice-fail">
+        <i class="am-icon-exclamation-circle"></i>
+        <span> 客官,添加失败</span>
+    </div>
+
+    <div class="notice notice-box notice-friend">
+        <i class="am-icon-exclamation-circle"></i>
+        <span> 客官,友链名或友链地址不能为空</span>
+    </div>
+</div>
+
+<a href="#" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu"
+   data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
+
+</body>
+<script src="../../static/assets/js/amazeui.js" th:src="@{/assets/js/amazeui.js}"></script>
+<script src="../../static/assets/js/app.js" th:src="@{/assets/js/app.js}"></script>
+<script src="../../static/style/js/SuperAdmin.js" th:src="@{/style/js/SuperAdmin.js}"></script>
+<script src="../../static/style/js/header.js" th:src="@{/style/js/header.js}"></script>
+</html>
