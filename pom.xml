@@ -18,7 +18,7 @@
 		<java.version>1.8</java.version>
 		<asciidoctor.version>2.0.4.RELEASE</asciidoctor.version>
 		<pagehelper.spring.boot.starter.version>1.2.5</pagehelper.spring.boot.starter.version>
-		<commons.io.version>2.5</commons.io.version>
+		<commons.io.version>2.7</commons.io.version>
 		<jwt.version>0.9.0</jwt.version>
 	</properties>
 
